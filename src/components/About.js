@@ -1,40 +1,46 @@
-import React ,{useState} from 'react'
+import React from 'react'
 
 
 export default function About() {
 
-    const [myStyle, setMyState] = useState({
+    // const [myStyle, setMyState] = useState({
+    //     color: 'black',
+    //     backgroundColor: 'white',
+    //     boxshadow: 'inset 0 -1px 0 rgb(0 0 0 / 13%)'
+    // })
+
+     const myStyle = {
         color: 'black',
         backgroundColor: 'white',
         boxshadow: 'inset 0 -1px 0 rgb(0 0 0 / 13%)'
-    })
-
-    const [btnText, btnSetText] = useState('Enable Dark Mode')
-
-    const newStyle = (event) => {
-        if (myStyle.color === 'white') {
-            setMyState(
-                {
-                    color: 'white',
-                    backgroundColor: 'black',
-                    boxshadow: 'inset 0 -1px 0 rgb(0 0 0 / 13%)'
-
-                })
-              btnSetText('Enable Dark Mode')
-
-        } else {
-            setMyState(
-                {
-                    color: 'white',
-                    backgroundColor: 'black',
-                    boxshadow: 'inset 0 -1px 0 rgb(0 0 0 / 13%)'
-                })
-                btnSetText('Enable Light Mode')
-
-        }
-
-
     }
+
+    // const [btnText, btnSetText] = useState('Enable Dark Mode')
+
+    // const newStyle = (event) => {
+    //     if (myStyle.color === 'white') {
+    //         setMyState(
+    //             {
+    //                 color: 'white',
+    //                 backgroundColor: 'black',
+    //                 boxshadow: 'inset 0 -1px 0 rgb(0 0 0 / 13%)'
+
+    //             })
+    //           btnSetText('Enable Dark Mode')
+
+    //     } else {
+    //         setMyState(
+    //             {
+    //                 color: 'white',
+    //                 backgroundColor: 'black',
+    //                 boxshadow: 'inset 0 -1px 0 rgb(0 0 0 / 13%)'
+    //             })
+    //             btnSetText('Enable Light Mode')
+
+    // //     }
+
+
+    // }
 
     return (
 
@@ -78,9 +84,9 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            <div className="container my-3">
+            {/* <div className="container my-3">
                 <button className='btn btn-primary' onClick={newStyle}>{btnText}</button>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -32,9 +32,10 @@ export default function TextForm(props) {
     }
 
     const copyContent = () => {
-        var text = document.getElementById('myText')
-        text.select();
-        navigator.clipboard.writeText(text.value)
+        // var text = document.getElementById('myText')
+        // text.select();
+        navigator.clipboard.writeText(text)
+        // document.getSelection().removeAllRanges();
         props.showAlert('Content Is Coppied...' , 'success :')
     }
 
@@ -90,19 +91,19 @@ export default function TextForm(props) {
                 <div className="mb-3">
                     <textarea className='form-control col-6'  style={{backgroundColor:props.mode ==='dark'?'#042743':'white' , color:props.mode ==='dark'?'white':'#042743'}} placeholder="Enter Your Text Here ....." value={text} onChange={handleOnChange} id="myText" rows="8" cols="5" ></textarea>
                 </div>
-                <button className="btn btn-primary mx-1" onClick={handleUpClick} >Convert To Upparcase</button>
-                <button className="btn btn-primary mx-1" onClick={handleLowerClick}>Convert To Lowercase</button>
-                <button className="btn btn-primary mx-1" onClick={handleClearText}>Clear Text</button>
-                <button className="btn btn-primary mx-1" onClick={downloadContent}>Download Text File</button>
-                <button className="btn btn-primary mx-1" onClick={copyContent}>Copy Content</button>
-                <button className="btn btn-primary mx-1" onClick={removeExtraSpaces}>Remove Extra Spaces</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick} >Convert To Upparcase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowerClick}>Convert To Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClearText}>Clear Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={downloadContent}>Download Text File</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={copyContent}>Copy Content</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={removeExtraSpaces}>Remove Extra Spaces</button>
 
             </div>
             <div className="container my-3">
                 <h2>Your Text Summary :</h2>
                
-                <p className='text-warning'>Total Words : <b className='text-danger'>  {text.split(' ').filter(t => t.trim().length > 0).length} </b> | Total Charachters : <b className='text-danger'> {text.length} </b></p>
-                <p className='text-warning'>Minutes To Read Content : <b className='text-danger'> {0.008 * text.split(' ').length} </b></p>
+                <p className='text-warning'>Total Words : <b className='text-danger'> {text.split(/\s+/).filter((element)=>{return element.length!==0}).length}  </b> | Total Charachters : <b className='text-danger'> {text.length} </b></p>
+                <p className='text-warning'>Minutes To Read Content : <b className='text-danger'> {0.008 * text.split(' ').filter((element)=>{return element.length!==0}).length} </b></p>
                 <h2 className='my-3'>Preview Content :</h2>
                 <div className="alert alert-info col-7">
                     {text.length>0?text:'Enter Something To Preview'}
@@ -110,6 +111,8 @@ export default function TextForm(props) {
                 {/* {text.split(' ').filter((text) =>{if(text !== '' ) return text}).length} */}
                 {/* console.log({text.split()})   console.log({text.split().length}) */}
                 {/* {newWord.split(' ').filter(t => t.trim().length > 0).length} */}
+                {/* {text.split(' ').filter(t => t.trim().length > 0).length} */}
+
             </div>
         </>
     )
